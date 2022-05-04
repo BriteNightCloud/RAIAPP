@@ -1,0 +1,35 @@
+﻿<Page x:Class="RAIAPP.Views.Pages.pDemo"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:RAIAPP.Views.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Демо режим" Loaded="Page_Loaded">
+
+    <Grid>
+        <ListView x:Name="lvOrders">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Vertical" Width="200">
+                            <Image Source="{Binding Personal.Photo}" Width="50" Height="50"/>
+                            <TextBlock Text="{Binding Personal.FullName}"/>
+
+                        </StackPanel>
+                        <StackPanel>
+                            <TextBlock Text="{Binding Auto.Model.Mark.MarkName}"/>
+                            <TextBlock Text="{Binding Auto.Model.ModelName}"/>
+                            <TextBlock Text="{Binding Auto.MaskStateNumber}"/>
+                        </StackPanel>
+                        <StackPanel>
+                            <TextBlock/>
+                            <TextBlock Text="{Binding Status.StatusName}" Foreground="{Binding Status.StatusColor}"/>
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>

@@ -1,0 +1,56 @@
+﻿<Page x:Class="RAIAPP.Views.Pages.pMain"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:RAIAPP.Views.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="АвтоРай" Loaded="Page_Loaded">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <TextBox x:Name="tbSearch" TextChanged="tbSearch_TextChanged" HorizontalAlignment="Left"/>
+            <ComboBox x:Name="cmbFilter" SelectionChanged="cmbFilter_SelectionChanged" HorizontalAlignment="Left" Margin="115,5,5,5">
+                <ComboBoxItem>Все</ComboBoxItem>
+                <ComboBoxItem>Выполнено</ComboBoxItem>
+                <ComboBoxItem>Запланировано</ComboBoxItem>
+                <ComboBoxItem>Принята к исполнению</ComboBoxItem>
+            </ComboBox>
+            <Button x:Name="btnProfile" Content="Личный кабинет" HorizontalAlignment="Right" Width="120" Margin="5,5,5,5" Click="btnProfile_Click"/>
+            <Button x:Name="btnAdmin" Content="Изменить пользователей" HorizontalAlignment="Right" Margin="5,5,130,5" Click="btnAdmin_Click"/>
+        </Grid>
+        <DataGrid x:Name="dgOrders" AutoGenerateColumns="false" CanUserAddRows="False" Grid.Row="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Авто">
+                    <DataGridTextColumn.Binding>
+                        <MultiBinding StringFormat="{}{0} {1}">
+                            <Binding Path="Auto.Model.Mark.MarkName"/>
+                            <Binding Path="Auto.Model.ModelName"/>
+                        </MultiBinding>
+                    </DataGridTextColumn.Binding>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Номер" Binding="{Binding Auto.StateNumber}"/>
+                <DataGridTextColumn Header="Клиент" Binding="{Binding Auto.Client.FullName}"/>
+                <DataGridTextColumn Header="Дата" Binding="{Binding OrderDate,StringFormat={}{0:F}}"/>
+            </DataGrid.Columns>
+            <DataGrid.RowDetailsTemplate>
+                <DataTemplate>
+                    <DataGrid ItemsSource="{Binding OrderServices}" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Услуга" Binding="{Binding Service1.ServiceName}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Цена" Binding="{Binding Service1.Cost}"></DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DataTemplate>
+            </DataGrid.RowDetailsTemplate>
+        </DataGrid>
+
+        <TextBlock x:Name="tblCountRecord" Grid.Row="2"/>
+    </Grid>
+</Page>

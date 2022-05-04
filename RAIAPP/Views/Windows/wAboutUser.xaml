@@ -1,0 +1,34 @@
+﻿<Window x:Class="RAIAPP.Views.Windows.wAboutUser"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RAIAPP.Views.Windows"
+        mc:Ignorable="d"
+        Title="Регистрация" Height="250" Width="300" Closed="Window_Closed">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Right" Grid.Column="0">
+            <TextBlock Text="Логин"/>
+            <TextBox x:Name="tbLogin"/>
+            <TextBlock Text="Пароль"/>
+            <PasswordBox x:Name="pbPassword"/>
+            <TextBlock Text="Имя"/>
+            <TextBox x:Name="tbFirstName"/>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Grid.Column="1">
+            <TextBlock Text="Фамилия"/>
+            <TextBox x:Name="tbLastName"/>
+            <TextBlock Text="Отчество"/>
+            <TextBox x:Name="tbMiddleName"/>
+            <TextBlock Text="Телефон"/>
+            <TextBox x:Name="tbPhone"/>
+        </StackPanel>
+
+        <Button x:Name="btnEnd" Height="25" Content="" Width="100" Grid.ColumnSpan="2" VerticalAlignment="Bottom" Margin="0,0,0,15"/>
+    </Grid>
+</Window>
